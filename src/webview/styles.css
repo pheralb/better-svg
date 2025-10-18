@@ -1,0 +1,199 @@
+/**
+ * Copyright 2025 Miguel Ángel Durán
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+:root {
+  color-scheme: var(--vscode-color-scheme, light dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--vscode-font-family);
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+}
+
+.preview-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  gap: 8px;
+  background-color: var(--vscode-sideBar-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vscode-foreground);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.preview-header-title {
+  flex: 1;
+}
+
+.zoom-level {
+  font-size: 10px;
+  font-style: italic;
+  font-weight: normal;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+.preview-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.toggle-dark-bg-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  padding: 4px;
+  margin: -4px;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--vscode-foreground) 10%, transparent);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, var(--vscode-foreground) 15%, transparent);
+  }
+}
+
+.toggle-dark-bg {
+  width: 18px;
+  height: 18px;
+  color: var(--vscode-foreground);
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.toggle-dark-bg-wrapper:hover .toggle-dark-bg {
+  opacity: 1;
+}
+
+.color-picker-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--vscode-foreground);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.color-picker-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px;
+  margin: -4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.color-picker-wrapper:hover {
+  background-color: color-mix(in srgb, var(--vscode-foreground) 10%, transparent);
+}
+
+.color-picker-wrapper:active {
+  background-color: color-mix(in srgb, var(--vscode-foreground) 15%, transparent);
+}
+
+.color-picker-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--vscode-panel-border);
+  pointer-events: none;
+}
+
+input[type="color"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.preview-content {
+  flex: 1;
+  padding: 16px;
+  background-color: var(--vscode-editorWidget-background);
+  background: repeating-conic-gradient(
+    color-mix(in srgb, var(--vscode-editorWidget-background) 90%, transparent) 0% 25%,
+    color-mix(in srgb, var(--vscode-editorWidget-border) 85%, transparent) 0% 50%
+  ) 50% / 18px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+  transition: background-color 0.3s ease;
+}
+
+.preview-content.dark-background {
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: none;
+}
+
+.preview-content.zoom-out-cursor {
+  cursor: zoom-out;
+}
+
+.preview-content.grabbing {
+  cursor: grabbing;
+}
+
+.preview-svg-wrapper {
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-svg-wrapper svg {
+  max-width: none;
+  max-height: none;
+  display: block;
+}
