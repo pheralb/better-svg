@@ -1,27 +1,41 @@
 {
   "name": "better-svg",
   "displayName": "Better SVG",
-  "description": "SVG editor with live preview and optimization",
+  "description": "Live SVG preview with color picker, zoom controls, and SVGO optimization.",
   "version": "0.0.1",
   "publisher": "midudev",
   "author": {
     "name": "Miguel Ángel Durán"
   },
   "license": "Apache-2.0",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#df6c31",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/midudev/better-svg"
   },
+  "bugs": {
+    "url": "https://github.com/midudev/better-svg/issues"
+  },
+  "homepage": "https://github.com/midudev/better-svg#readme",
   "engines": {
-    "vscode": "^1.100.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
+    "Programming Languages",
+    "Visualization",
     "Other"
   ],
-  "main": "./dist/extension.js",
-  "activationEvents": [
-    "onLanguage:xml"
+  "keywords": [
+    "svg",
+    "preview svg",
+    "optimize svg",
+    "svgo"
   ],
+  "main": "./dist/extension.js",
   "contributes": {
     "views": {
       "explorer": [
@@ -96,8 +110,6 @@
     "package": "npm run check-types && node esbuild.js --production && npm run copy-webview",
     "check-types": "tsc --noEmit",
     "copy-webview": "mkdir -p dist/webview && cp src/webview/*.html src/webview/*.css src/webview/*.js dist/webview/",
-    "compile-tests": "tsc -p . --outDir out",
-    "pretest": "npm run compile-tests && npm run lint",
     "test": "vscode-test",
     "lint": "eslint src --ext ts"
   },
