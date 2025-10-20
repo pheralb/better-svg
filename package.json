@@ -82,20 +82,6 @@
           "default": "#ffffff",
           "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
           "description": "Default color for currentColor in the SVG preview (hex format, e.g., #ffffff)"
-        },
-        "betterSvg.webpQuality": {
-          "type": "number",
-          "default": 80,
-          "minimum": 0,
-          "maximum": 100,
-          "description": "Quality for WEBP export (0-100, where 100 is best quality)"
-        },
-        "betterSvg.webpWidth": {
-          "type": "number",
-          "default": 1024,
-          "minimum": 64,
-          "maximum": 8192,
-          "description": "Default width in pixels for WEBP export (height scales proportionally)"
         }
       }
     }
