@@ -1,55 +1,58 @@
 # Better SVG
 
-Una extensión de Visual Studio Code para editar archivos SVG con vista previa en tiempo real y optimización integrada.
+A Visual Studio Code extension for editing SVG files with live preview and integrated optimization.
 
-## Características
+## Features
 
-- ✨ **Editor con vista previa en lateral**: Edita tu SVG en un textarea con preview en tiempo real en el panel de "Explorer"
-- 🎨 **Control de currentColor**: Cambia el valor de `currentColor` para previsualizar diferentes esquemas de color
-- 🌓 **Fondo oscuro**: Activa/desactiva un fondo oscuro para visualizar mejor SVGs con colores claros
-- 🔍 **Zoom y pan**: Zoom in/out con click o Alt+click, scroll con Alt, y arrastra para hacer pan
-- ⚡ **Optimización con SVGO**: Botón integrado en la barra de herramientas para optimizar tu SVG
-- 📐 **Fondo en cuadrícula**: La vista previa incluye un fondo en cuadrícula para ver mejor los SVG con transparencia
+- ✨ **Editor with side preview**: Edit your SVG in a textarea with real-time preview in the Explorer panel
+- 🎨 **currentColor control**: Change the `currentColor` value to preview different color schemes
+- 🌓 **Dark background**: Toggle dark background to better visualize SVGs with light colors
+- 🔍 **Zoom and pan**: Zoom in/out with click or Alt+click, scroll with Alt, and drag to pan
+- ⚡ **SVGO optimization**: Integrated toolbar button to optimize your SVG
+- 📐 **Grid background**: Preview includes a grid background to better see transparent SVGs
 
-## Uso
+## Usage
 
-1. Abre cualquier archivo `.svg`
-2. La extensión abrirá automáticamente el editor personalizado con:
-   - Editor de código ocupando todo el panel
-   - Panel de preview
-3. Haz clic en el icono ⚡ en la barra de herramientas para optimizar el SVG
+1. Open any `.svg` file
+2. The extension will automatically open the custom editor with:
+   - Code editor taking up the full panel
+   - Preview panel
+3. Click the ⚡ icon in the toolbar to optimize the SVG
 
-### Controles del preview
+### Preview controls
 
-- **Arrastrar panel**: Haz clic en el header "Preview" y arrastra
-- **Redimensionar**: Usa el handle de resize en la esquina inferior derecha
-- **Zoom in**: Click normal sobre el preview
-- **Zoom out**: Mantén Alt + Click
-- **Zoom con scroll**: Mantén Alt + usa la rueda del ratón
-- **Pan**: Cuando hay zoom, arrastra el SVG con el botón izquierdo
-- **Cambiar currentColor**: Click en el icono de paleta + círculo de color
-- **Fondo oscuro**: Click en el icono de luna
+- **Drag panel**: Click on the "Preview" header and drag
+- **Resize**: Use the resize handle in the bottom right corner
+- **Zoom in**: Normal click on the preview
+- **Zoom out**: Hold Alt + Click
+- **Zoom with scroll**: Hold Alt + use mouse wheel
+- **Pan**: When zoomed, drag the SVG with left button
+- **Change currentColor**: Click the palette icon + color circle
+- **Dark background**: Click the moon icon
 
-## Configuración
+## Configuration
 
-La extensión incluye las siguientes opciones configurables (accesibles desde Configuración → Extensions → Better SVG):
+The extension includes the following configurable options (accessible from Settings → Extensions → Better SVG):
 
 ### `betterSvg.autoReveal`
-- **Tipo**: `boolean`
-- **Valor por defecto**: `true`
-- **Descripción**: Expande automáticamente el panel "SVG Preview" en el Explorer cuando abres un archivo SVG. Si está desactivado, tendrás que abrir manualmente el panel cada vez.
+
+- **Type**: `boolean`
+- **Default value**: `true`
+- **Description**: Automatically expand the "SVG Preview" panel in Explorer when opening an SVG file. If disabled, you'll need to manually open the panel each time.
 
 ### `betterSvg.autoCollapse`
-- **Tipo**: `boolean`
-- **Valor por defecto**: `true`
-- **Descripción**: Colapsa automáticamente el panel "SVG Preview" cuando cierras todos los archivos SVG o cambias a un archivo que no es SVG. Si está desactivado, el panel permanecerá abierto incluso cuando no haya archivos SVG activos.
+
+- **Type**: `boolean`
+- **Default value**: `true`
+- **Description**: Automatically collapse the "SVG Preview" panel when closing all SVG files or switching to a non-SVG file. If disabled, the panel will remain open even when no SVG files are active.
 
 ### `betterSvg.defaultColor`
-- **Tipo**: `string`
-- **Valor por defecto**: `"#ffffff"`
-- **Descripción**: Color por defecto para `currentColor` en la vista previa del SVG. Debe ser un color hexadecimal válido (ej: `#ffffff`, `#000`, `#ff5733`). Este color se aplicará al abrir un archivo SVG y puede ser cambiado manualmente usando el selector de color en el panel de preview.
 
-### Ejemplo de configuración en `settings.json`:
+- **Type**: `string`
+- **Default value**: `"#ffffff"`
+- **Description**: Default color for `currentColor` in the SVG preview. Must be a valid hexadecimal color (e.g., `#ffffff`, `#000`, `#ff5733`). This color will be applied when opening an SVG file and can be manually changed using the color picker in the preview panel.
+
+### Example configuration in `settings.json`
 
 ```json
 {
@@ -59,21 +62,21 @@ La extensión incluye las siguientes opciones configurables (accesibles desde Co
 }
 ```
 
-## Estructura del proyecto
+## Project structure
 
-```
+```text
 better-svg/
 ├── src/
-│   ├── extension.ts           # Punto de entrada de la extensión
-│   ├── svgEditorProvider.ts   # Proveedor del editor personalizado
-│   └── webview/               # Archivos del webview
-│       ├── index.html         # Template HTML
-│       ├── styles.css         # Estilos CSS
-│       └── main.js            # Lógica JavaScript del webview
+│   ├── extension.ts           # Extension entry point
+│   ├── svgEditorProvider.ts   # Custom editor provider
+│   └── webview/               # Webview files
+│       ├── index.html         # HTML template
+│       ├── styles.css         # CSS styles
+│       └── main.js            # Webview JavaScript logic
 └── package.json
 ```
 
-## Instalación para desarrollo
+## Development installation
 
 ```bash
 cd better-svg
@@ -81,54 +84,39 @@ npm install
 npm run compile
 ```
 
-Luego presiona `F5` en VS Code para abrir una ventana de extensión para probar.
+Then press `F5` in VS Code to open an extension window for testing.
 
-## Compilar
+## Build
 
-### Desarrollo
+### Development
 
 ```bash
-# Compilación única
+# Single compilation
 npm run compile
 
-# Watch mode (recompila automáticamente al guardar)
+# Watch mode (automatically recompiles on save)
 npm run watch
 ```
 
-### Producción
+### Production
 
 ```bash
-# Build optimizado para producción (minificado)
+# Optimized production build (minified)
 npm run package
 ```
 
-La extensión usa **esbuild** para bundling, lo que significa:
-- ✅ **Más rápida**: El bundle se carga instantáneamente
-- ✅ **Más pequeña**: ~500KB vs múltiples archivos
-- ✅ **Compatible con web**: Funciona en github.dev y vscode.dev
-- ✅ **Type checking**: TypeScript verifica tipos sin emitir archivos
+The extension uses **esbuild** for bundling, which means:
 
-## Empaquetar
+- ✅ **Faster**: Bundle loads instantly
+- ✅ **Smaller**: ~500KB vs multiple files
+- ✅ **Web compatible**: Works on github.dev and vscode.dev
+- ✅ **Type checking**: TypeScript verifies types without emitting files
+
+## Package
 
 ```bash
 npm install -g @vscode/vsce
 vsce package
 ```
 
-Esto creará un archivo `.vsix` que puede ser instalado o publicado en el marketplace.
-
-## Licencia
-
-Copyright 2025 Miguel Ángel Durán
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+This will create a `.vsix` file that can be installed or published to the marketplace.
