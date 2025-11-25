@@ -15,6 +15,7 @@
  */
 
 const $ = document.querySelector.bind(document)
+const vscode = acquireVsCodeApi()
 
 ;(function () {
   const preview = $('#preview')
@@ -24,6 +25,8 @@ const $ = document.querySelector.bind(document)
   const colorSwatch = $('#colorSwatch')
   const toggleDarkBg = $('#toggleDarkBg')
   const toggleDarkBgWrapper = $('#toggleDarkBgWrapper')
+  const centerIconWrapper = $('#centerIconWrapper')
+  const optimizeWrapper = $('#optimizeWrapper')
   const zoomLevel = $('#zoomLevel')
 
   // Get default color from the color picker value (set by template)
@@ -96,6 +99,18 @@ const $ = document.querySelector.bind(document)
       toggleDarkBg.setAttribute('stroke-linecap', 'round')
       toggleDarkBg.setAttribute('stroke-linejoin', 'round')
     }
+  })
+
+  // Center icon functionality
+  centerIconWrapper.addEventListener('click', () => {
+    resetZoom()
+  })
+
+  // Optimize functionality
+  optimizeWrapper.addEventListener('click', () => {
+    vscode.postMessage({
+      type: 'optimize'
+    })
   })
 
   // Zoom and pan functionality
