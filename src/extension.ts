@@ -178,10 +178,16 @@ export async function optimizeSvgDocument (document: vscode.TextDocument) {
     const removeClasses = config.get<boolean>('removeClasses', true)
 
     const plugins: any[] = [
-      'preset-default',
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false
+          }
+        }
+      },
       'removeDoctype',
-      'removeComments',
-      'removeViewBox'
+      'removeComments'
     ]
 
     if (removeClasses) {
